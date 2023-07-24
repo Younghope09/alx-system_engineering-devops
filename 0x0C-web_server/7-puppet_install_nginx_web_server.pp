@@ -1,22 +1,24 @@
-# (Puppet manifest to configure a brand new webserver)
-package {'nginx':
-  ensure => 'installed',
+# Setup New Ubuntu server with nginx
+
+exec { 'update system':
+        command => '/usr/bin/apt-get update',
 }
-file {'/var/www/html/index.nginx-debian.html':
-  ensure  => 'present',
-  path    => '/var/www/html/index.nginx-debian.html',
-  content => 'Hello World!',
+
+package { 'nginx':
+	ensure => 'installed',
+	require => Exec['update system']
 }
-file {'/usr/share/nginx/html/custom_404':
-  ensure  => 'present',
-  path    => '/usr/share/nginx/html/custom_404',
-  content => 'Ceci n\'est pas une page',
+
+file {'/var/www/html/index.html':
+	content => 'Hello World!'
 }
-exec {'command':
-  path    => '/bin',
-  command => 'sed -i "48i\	location \/redirect_me {\n		try_files \$uri =301;\n	}" /etc/nginx/sites-available/default',
+
+exec {'redirect_me':
+	command => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+	provider => 'shell'
 }
+
 service {'nginx':
-  ensure => 'running',
-  enable => true,
+	ensure => running,
+	require => Package['nginx']
 }
