@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/99324596/200134291-63bc7900-acf2-4c94-ba4d-7abdafd4098b.png)
+
 Date: August 14th, 2023
 Author: Agbo Hope
 Position: SE
