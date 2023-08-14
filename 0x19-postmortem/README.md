@@ -1,4 +1,4 @@
-![image](https://imgur.com/gallery/bLNKEJ8)
+![image](https://github.com/Younghope09/alx-system_engineering-devops/assets/113416881/34f090d1-d9f9-4ad3-bc70-7453f6b0bbef)
 
 Date: August 14th, 2023
 Author: Agbo Hope
